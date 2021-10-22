@@ -9,8 +9,27 @@
   <body>
     <!-- Contenedor de Vue (Todo lo de vue debe ir dentro de un div) -->
     <div id="app">
+
+        <h1>{{ titulo }}</h1>
+      
+        <!-- Se utiliza la palabra reservada v-model para unir nuestro formulario
+        con el archivo js-->
+      
+        <input type="text" v-model="nuevaFruta"/>
+      
+      <!-- Para iniciar un evento en vue se utiliza la palabra reservada
+        v-on o el abreviado @ : y el nombre del evento-->
+
+      <button @:click="agregarFruta">Agregar</button>
+      
+      
       <ul>
-        <li v-for="fruta in frutas"><h1>{{ fruta }}</h1></li>
+        <!-- ciclo for para ir creando distintas etiquetas li, una para cada elemento -->
+        <li v-for="fruta in frutasObjeto">
+          {{ fruta.nombre }}:
+          <span v-if="fruta.cantidad === 0"> sin stock </span>
+          <span v-else> {{ fruta.cantidad }} </span>
+        </li>
       </ul>
     </div>
 
